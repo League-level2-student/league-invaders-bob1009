@@ -18,6 +18,6 @@ void setup() {
 	frame.setVisible(true);
 	frame.setSize(WIDTH,HEIGHT);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	frame.addKeyListener(panel);
+	frame.addKeyListener(gamepanel);
 }
 }

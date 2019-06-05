@@ -16,6 +16,7 @@ final int MENU = 0;
 final int GAME = 1;
 final int END = 2;
 int currentState = MENU;
+Rocketship ship=new Rocketship(250,700,50,50);
 Timer frameDraw;
 Font titleFont;
 Font extratext;
@@ -44,13 +45,15 @@ Font extratext2;
 	g.drawString("League Invaders", 40, 50);
 	g.setFont(titleFont);
 	g.setColor(Color.YELLOW);
-	g.drawString("press space to start", 50, 150);
+	g.drawString("press enter to start", 50, 150);
 	g.setFont(titleFont);
 	g.setColor(Color.YELLOW);
-	g.drawString("press enter for rules", 50, 250);}
+	g.drawString("press space for rules", 50, 250);}
 	
 	void drawGameState(Graphics g) { g.setColor(Color.BLACK);
-	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT); }
+	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT); 
+	ship.draw(g);
+	}
 	
 	void drawEndState(Graphics g)  { g.setColor(Color.RED);
 	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
@@ -72,7 +75,7 @@ Font extratext2;
 		}else if(currentState == END){
 		    updateEndState();
 		}
-		System.out.println("action");
+		repaint();
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -83,7 +86,7 @@ Font extratext2;
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode()==KeyEvent.VK_ENTER) {
-		    if (currentState == END) {
+		    if (currentState > END) {
 		        currentState = MENU;
 		    } else {
 		        currentState++;
@@ -91,13 +94,16 @@ Font extratext2;
 		}   
 		if (e.getKeyCode()==KeyEvent.VK_UP) {
 		    System.out.println("UP");
+		    ship.up();
 		}if (e.getKeyCode()==KeyEvent.VK_DOWN) {
 		    System.out.println("DOWN");
+		    ship.down();
 		}
 	if (e.getKeyCode()==KeyEvent.VK_LEFT) {
-	    System.out.println("LEFT");}
+	    ship.left();}
 	if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
-	    System.out.println("RIGHT");}
+	    System.out.println("RIGHT");
+	    ship.right();}
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
