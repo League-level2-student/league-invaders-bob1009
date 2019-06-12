@@ -21,6 +21,7 @@ Timer frameDraw;
 Font titleFont;
 Font extratext;
 Font extratext2;
+ObjectManager oj;
 	@Override
 	public void paintComponent(Graphics g){
 		if(currentState == MENU){
@@ -34,7 +35,9 @@ Font extratext2;
 	}
 	void updateMenuState() {  }
 	
-	void updateGameState() {  }
+	void updateGameState() { 
+		oj.update();
+	}
 	
 	void updateEndState()  {  }
 	
@@ -52,18 +55,20 @@ Font extratext2;
 	
 	void drawGameState(Graphics g) { g.setColor(Color.BLACK);
 	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT); 
-	ship.draw(g);
+	oj.draw(g);
 	}
 	
 	void drawEndState(Graphics g)  { g.setColor(Color.RED);
 	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
 	}
 	GamePanel(){
+		oj=new ObjectManager(ship);
 		titleFont = new Font("Arial", Font.PLAIN, 48);
 	extratext = new Font("Arial", Font.PLAIN,30);
 	extratext2 = new Font("Arial", Font.PLAIN,20);
 	 frameDraw = new Timer(1000/60,this);
 	    frameDraw.start();
+	    
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {

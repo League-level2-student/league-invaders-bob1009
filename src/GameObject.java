@@ -1,16 +1,16 @@
 
 public class GameObject {
-	 int X;
-	 int Y;
-	 int WIDTH;
-	 int HEIGHT;
+	 int x;
+	 int y;
+	 int width;
+	 int height;
 	 int speed=0;
 	 boolean isactive=true;
 	 GameObject(int x,int y,int width,int height){
-		this.X=x;
-		this.HEIGHT=height;
-		this.WIDTH=width;
-		this.Y=y;
+		this.x=x;
+		this.height=height;
+		this.width=width;
+		this.y=y;
 	 }
 	void update(){}
 }
