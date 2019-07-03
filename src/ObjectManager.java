@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ObjectManager implements ActionListener {
+	int score=0;
 Rocketship rocket;
 ArrayList<projctile> lasers = new ArrayList<projctile>();
 ArrayList<Alien> creature = new ArrayList<Alien>();
@@ -13,17 +14,19 @@ Random ran=new Random();
 ObjectManager(Rocketship rocket){
 	this.rocket=rocket;
 }
-void addProjectile(projctile laser) {
-	lasers.add(laser);
-}
+
 void addAlien() {
 	creature.add(new Alien(ran.nextInt(LeagueInvaders.width),0,50,50));
 }
 void update() {
 	for (int i = 0; i < creature.size(); i++) {
 		Alien j = creature.get(i);
+			j.update();
 		if (j.y>LeagueInvaders.height) {
 			j.isactive=false;
+			
+			checkCollision();
+			purgeObject();
 		}
 	}
 }
@@ -47,4 +50,22 @@ public void actionPerformed(ActionEvent e) {
 	addAlien();
 }
 
+void addProjectile(projctile projectile) {
+lasers.add(projectile);
+	
+}
+void checkCollision(){
+for (int i = 0; i < creature.size(); i++) {
+	if(rocket.collisionbox.intersects(creature.get(i).collisionbox)) {
+		update();
+	}
+	for (int j = 0; j < lasers.size(); j++) {
+		if(.collisionbox.intersects(lasers.get(i).collisionbox)) {
+		update();
+	}
+}
+}
+int getscore() {
+	return score;
+}
 }

@@ -133,7 +133,7 @@ Timer alienSpawn;
 	    System.out.println("RIGHT");
 	    ship.right();} 
 	if (e.getKeyCode()==KeyEvent.VK_SPACE&&currentState==GAME) {
-				ObjectManager.addProjectile();
+		oj.addProjectile(ship.getProjectile());
 			}
 	}
 	@Override
@@ -151,4 +151,5 @@ Timer alienSpawn;
 	        needImage = false;
 	    }
 	}
+	
 }
