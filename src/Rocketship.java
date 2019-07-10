@@ -9,7 +9,10 @@ public class Rocketship extends GameObject {
 	
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
-
+	boolean down=false;
+	boolean up = false;
+	boolean left=false;
+	boolean right=false;
 Rocketship(int x, int y, int height, int width){
 	super(x,y,width,height);
 	this.speed=10;
@@ -17,6 +20,22 @@ Rocketship(int x, int y, int height, int width){
 	    loadImage ("rocket.png");
 	}
 }
+void update() {
+	super.update();
+	if(up == true) {
+		y-=speed;
+	}
+	if(down==true) {
+		y+=speed;
+	}
+	if(left==true) {
+		x-=speed;
+	}
+	if(right==true) {
+		x+=speed;
+	}
+}
+
 void draw(Graphics g) {
 	if (gotImage) {
 		g.drawImage(image, x, y, width, height, null);

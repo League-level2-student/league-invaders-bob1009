@@ -41,6 +41,9 @@ Timer alienSpawn;
 	
 	void updateGameState() { 
 		oj.update();
+		if (ship.isactive==false) {
+			currentState=END;
+		}
 	}
 	
 	void updateEndState()  {  }
@@ -121,26 +124,35 @@ Timer alienSpawn;
 		   
 		}   
 		if (e.getKeyCode()==KeyEvent.VK_UP) {
-		    System.out.println("UP");
-		    ship.up();
+		   ship.up = true;
 		}if (e.getKeyCode()==KeyEvent.VK_DOWN) {
-		    System.out.println("DOWN");
-		    ship.down();
+		    ship.down=true;
 		}
 	if (e.getKeyCode()==KeyEvent.VK_LEFT) {
-	    ship.left();}
+	    ship.left=true;}
 	if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
-	    System.out.println("RIGHT");
-	    ship.right();} 
+	   ship.right=true;}
 	if (e.getKeyCode()==KeyEvent.VK_SPACE&&currentState==GAME) {
 		oj.addProjectile(ship.getProjectile());
-			}
-	}
+	}}
+	
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
-	}void loadImage(String imageFile) {
+		if (e.getKeyCode()==KeyEvent.VK_UP) {
+			   ship.up = false;
+			}
+		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
+			    ship.down=true;
+			}
+		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+		    ship.left=true;}
+		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+			   ship.right=true;}
+	}
+	
+	
+	void loadImage(String imageFile) {
 	    if (needImage) {
 	        try {
 	            image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
