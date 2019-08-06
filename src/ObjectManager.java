@@ -26,7 +26,7 @@ public class ObjectManager implements ActionListener {
 			j.update();
 			if (j.y > LeagueInvaders.height) {
 				j.isactive = false;
-
+				
 			}
 
 		}
@@ -92,6 +92,8 @@ public class ObjectManager implements ActionListener {
 				if (c.collisionbox.intersects(laser.collisionbox)) {
 					c.isactive = false;
 					laser.isactive = false;
+					System.out.println("hit");
+					score=score+1;
 				}
 			}
 		}

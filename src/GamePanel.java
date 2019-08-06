@@ -56,10 +56,7 @@ Timer alienSpawn;
 	g.setFont(titleFont);
 	g.setColor(Color.YELLOW);
 	g.drawString("press enter to start", 50, 150);
-	g.setFont(titleFont);
-	g.setColor(Color.YELLOW);
-	g.drawString("press space for rules", 50, 250);}
-	
+	}
 	void drawGameState(Graphics g) { 
 		
 		if (gotImage) {
@@ -79,6 +76,12 @@ Timer alienSpawn;
 	
 	void drawEndState(Graphics g)  { g.setColor(Color.RED);
 	g.fillRect(0, 0, LeagueInvaders.width, LeagueInvaders.height);
+	g.setFont(titleFont);
+	g.setColor(Color.YELLOW);
+	g.drawString("You Died", 150,100);
+	g.setFont(titleFont);
+	g.setColor(Color.YELLOW);
+	g.drawString("you killed "+oj.score+" aliens", 50, 300);
 	}
 	GamePanel(){
 		 oj=new ObjectManager(ship);
@@ -143,12 +146,12 @@ Timer alienSpawn;
 			   ship.up = false;
 			}
 		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
-			    ship.down=true;
+			    ship.down=false;
 			}
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
-		    ship.left=true;}
+		    ship.left=false;}
 		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
-			   ship.right=true;}
+			   ship.right=false;}
 	}
 	
 	
